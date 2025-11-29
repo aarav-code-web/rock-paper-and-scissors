@@ -1,6 +1,6 @@
 console.log("Hello World");
 
-// Step 2: getComputerChoice
+
 function getComputerChoice() {
   const randomNum = Math.random();
 
@@ -13,23 +13,22 @@ function getComputerChoice() {
   }
 }
 
-// Step 3: getHumanChoice
-function getHumanChoice() {
-  const choice = prompt("Enter rock, paper, or scissors:");
-  return choice.toLowerCase();
+function updateResults(message) {
+  const resultsDiv = document.getElementById("results");
+  resultsDiv.textContent = message;
 }
 
-// Step 6: playGame (contains everything else)
+
 function playGame() {
   let humanScore = 0;
   let computerScore = 0;
 
-  // Step 5: playRound inside playGame
+  
   function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase();
 
     if (humanChoice === computerChoice) {
-      console.log(`Tie! You both chose ${humanChoice}`);
+      updateResults(`Tie! You both chose ${humanChoice}`);
       return;
     }
 
@@ -39,34 +38,31 @@ function playGame() {
       (humanChoice === "scissors" && computerChoice === "paper");
 
     if (humanWins) {
-      console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+      updateResults(`You win! ${humanChoice} beats ${computerChoice}`);
       humanScore++;
     } else {
-      console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+      updateResults(`You lose! ${computerChoice} beats ${humanChoice}`);
       computerScore++;
     }
   }
 
-  // Play 5 rounds
-  for (let i = 1; i <= 5; i++) {
-    console.log(`--- Round ${i} ---`);
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-  }
+  window.playRound = playRound;
 
-  // Final result
-  console.log("=== Final Score ===");
-  console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
-
-  if (humanScore > computerScore) {
-    console.log("You win the game!");
-  } else if (computerScore > humanScore) {
-    console.log("Computer wins the game!");
-  } else {
-    console.log("The game is a tie!");
-  }
 }
 
-// Start the game
 playGame();
+
+document.getElementById("rock").addEventListener("click", () => {
+  const computerChoice = getcomputerChoice();
+  playRound("rock", computerChoice);
+});
+
+document.getElementById("paper").addEventListener("click", () => {
+  const computerChoice = getcomputerChoice();
+  playRound("paper", computerChoice);
+});
+
+document.getElementById("scissors").addEventListener("click", () => {
+  const computerChoice = getcomputerChoice();
+  playRound("scissors", computerChoice);
+});
