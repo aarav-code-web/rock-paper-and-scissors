@@ -2,15 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Rock Paper Scissors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors - Enhanced</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="container">
+    <h1>🎮 Rock Paper Scissors</h1>
+    
+    <!-- Game Mode Selection -->
+    <div class="game-mode">
+      <label for="mode">Game Mode:</label>
+      <select id="mode">
+        <option value="infinite">Infinite</option>
+        <option value="5">Best of 5</option>
+        <option value="10">Best of 10</option>
+      </select>
+    </div>
 
-  <button id="rock">Rock</button>
-  <button id="paper">Paper</button>
-  <button id="scissors">Scissors</button>
+    <!-- Score Display -->
+    <div class="scoreboard">
+      <div class="score-box player">
+        <h2>You</h2>
+        <div class="score" id="human-score">0</div>
+      </div>
+      <div class="score-box computer">
+        <h2>Computer</h2>
+        <div class="score" id="computer-score">0</div>
+      </div>
+    </div>
 
-  <div id="results"></div>
+    <!-- Choice Display -->
+    <div class="choices-display">
+      <div class="choice-result">
+        <p>Your Choice</p>
+        <div class="choice-icon" id="human-choice">?</div>
+      </div>
+      <div class="vs">VS</div>
+      <div class="choice-result">
+        <p>Computer's Choice</p>
+        <div class="choice-icon" id="computer-choice">?</div>
+      </div>
+    </div>
+
+    <!-- Result Message -->
+    <div id="result-message" class="result-message"></div>
+
+    <!-- Game Buttons -->
+    <div class="buttons">
+      <button class="game-btn" id="rock" aria-label="Choose Rock">
+        <span class="icon">✊</span>
+        <span class="label">Rock</span>
+      </button>
+      <button class="game-btn" id="paper" aria-label="Choose Paper">
+        <span class="icon">✋</span>
+        <span class="label">Paper</span>
+      </button>
+      <button class="game-btn" id="scissors" aria-label="Choose Scissors">
+        <span class="icon">✌️</span>
+        <span class="label">Scissors</span>
+      </button>
+    </div>
+
+    <!-- Reset Button -->
+    <button class="reset-btn" id="reset">🔄 Reset Game</button>
+
+    <!-- Statistics -->
+    <div class="stats">
+      <h3>📊 Statistics</h3>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-label">Total Games:</span>
+          <span class="stat-value" id="total-games">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Wins:</span>
+          <span class="stat-value" id="total-wins">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Losses:</span>
+          <span class="stat-value" id="total-losses">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Ties:</span>
+          <span class="stat-value" id="total-ties">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Win Rate:</span>
+          <span class="stat-value" id="win-rate">0%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game History -->
+    <div class="history">
+      <h3>📜 Recent History</h3>
+      <div id="history-list" class="history-list">
+        <p class="no-history">No games played yet</p>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
